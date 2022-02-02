@@ -7,7 +7,7 @@ export default StyleSheet.create({
   },
 
   massageContainer: {
-    flexDirection: 'row'
+    flexDirection: "row",
   },
 
   text: {
@@ -15,11 +15,14 @@ export default StyleSheet.create({
     textAlign: "left",
   },
 
-  buttonWrapper: {
-    flexDirection: 'row',
-    justifyContent : 'center',
-    alignItems : 'center'
+  buttonContainer: {
+    flexDirection: "column",
+    // justifyContent: "flex-end",
+    alignItems: "center",
+    // top: "60%",
   },
+
+  buttonWrapper: {},
 
   nextMessage: {
     backgroundColor: "#FFCCFF",
@@ -29,20 +32,37 @@ export default StyleSheet.create({
   },
 
   buttonText: {
-    color: '#000',
-    textAlign: 'center',
+    color: "#000",
+    textAlign: "center",
   },
 
   logoWrapper: {
     marginBottom: 8,
     borderRadius: 64,
-    backgroundColor: '#000',
+    backgroundColor: "#000",
     width: 48,
     height: 48,
+  },
+
+  myLogoWrapper: {
+    marginBottom: 8,
+    borderRadius: 64,
+    backgroundColor: "#fff",
+    width: 48,
+    height: 48,
+    left: 300,
+  },
+
+  myMessageWrapper: {
+    left: 500,
   },
 
   icon: {
     width: 48,
     height: 48,
+  },
+  myIcon: {
+    width: 40,
+    height: 40,
   },
 });
