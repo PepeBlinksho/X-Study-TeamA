@@ -2,13 +2,13 @@ import React from 'react'
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 
+import MyNavigator from './page/ChatStory/app'
 import IkedaStory from './page/IkedaStory/app'
-// import MyNavigator from './page/ChatStory/app.jsx'
 
 const RootStack = createStackNavigator(
   {
     Home: IkedaStory,
-    // ChatStory: MyNavigator,
+    // ChatStory: IkedaStory,
   },
   {
     initialRouteName: 'Home',
