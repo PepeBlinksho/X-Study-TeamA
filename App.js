@@ -4,11 +4,12 @@ import { createStackNavigator } from 'react-navigation-stack'
 
 import MyNavigator from './page/ChatStory/app'
 import IkedaStory from './page/IkedaStory/app'
+import TopPage from './page/TopPage/app'
 
 const RootStack = createStackNavigator(
   {
-    Home: IkedaStory,
-    // ChatStory: IkedaStory,
+    Home: TopPage,
+    ChatStory: IkedaStory,
   },
   {
     initialRouteName: 'Home',
