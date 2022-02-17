@@ -8,60 +8,62 @@ export default class Top extends React.Component {
 
   render() {
     return (
-      <SafeAreaView style={styles.safeArea}>
-        <TouchableOpacity style={styles.safeArea}>
-          <View style={styles.containerA}>
-            <Animatable.View animation='fadeIn' delay={1000}>
-              <View style={styles.chatContainerA}>
-                <View style={styles.icon}/>
-                <View style={styles.chatA}/>
-              </View>
-              <View style={styles.chatContainerB}>
-                <View style={styles.chatB}/>
-              </View>
-            </Animatable.View>
-            <Animatable.View
-              style={styles.logoContainer}
-              animation='tada'
-              iterationCount='infinite'
-              direction='alternate'
-              iterationDelay={500}
-            >
-              <Image
-                style={styles.logo}
-                resizeMode='contain'
-                source={require('../../assets/top/logo.png')}
-              />
-            </Animatable.View>
-            <Animatable.View
-              style={styles.chatContainerC}
-              animation='fadeIn'
-              delay={2000}
-            >
-              <View style={styles.chatC}/>
-            </Animatable.View>
-            <StatusBar style="light" />
-          </View>
-          <View style={styles.containerB}>
-            <View style={styles.tapContainer}>
-              <View style={styles.triangle}/>
-              <View style={styles.textBox}/>
-              <Animatable.Text
-                style={styles.text}
-                animation='fadeIn'
-                iterationCount='infinite'
-                iterationDelay={1000}
-              >TAP TO START</Animatable.Text>
+      <TouchableOpacity style={styles.touchableOpacity}>
+        <SafeAreaView style={styles.safeArea}/>
+        <View style={styles.containerA}>
+          <Animatable.View animation='fadeIn' delay={1000}>
+            <View style={styles.chatContainerA}>
+              <View style={styles.icon}/>
+              <View style={styles.chatA}/>
             </View>
+            <View style={styles.chatContainerB}>
+              <View style={styles.chatB}/>
+            </View>
+          </Animatable.View>
+          <Animatable.View
+            style={styles.logoContainer}
+            animation='tada'
+            iterationCount='infinite'
+            direction='alternate'
+            iterationDelay={500}
+          >
+            <Image
+              style={styles.logo}
+              resizeMode='contain'
+              source={require('../../assets/top/logo.png')}
+            />
+          </Animatable.View>
+          <Animatable.View
+            style={styles.chatContainerC}
+            animation='fadeIn'
+            delay={2000}
+          >
+            <View style={styles.chatC}/>
+          </Animatable.View>
+          <StatusBar style='auto'/>
+        </View>
+        <View style={styles.containerB}>
+          <View style={styles.tapContainer}>
+            <View style={styles.triangle}/>
+            <View style={styles.textBox}/>
+            <Animatable.Text
+              style={styles.text}
+              animation='fadeIn'
+              iterationCount='infinite'
+              iterationDelay={1000}
+            >TAP TO START</Animatable.Text>
           </View>
-        </TouchableOpacity>
-      </SafeAreaView>
-    );
+        </View>
+      </TouchableOpacity>
+      );
   }
 }
 
 const styles = StyleSheet.create({
   safeArea: {
+    backgroundColor: 'white',
+  },
+  touchableOpacity: {
     flex: 1,
     backgroundColor: '#618783',
   },
@@ -110,7 +112,7 @@ const styles = StyleSheet.create({
   },
   chatContainerC: {
     position: 'absolute',
-    bottom: 30,
+    bottom: 40,
     flexDirection: 'row',
   },
   chatC: {
