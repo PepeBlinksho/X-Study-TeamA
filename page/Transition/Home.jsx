@@ -3,7 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Button, Text, View } from "react-native";
 
 export function HomeScreen() {
-  const navigation = useNavigation(); // (2)
+  const navigation = useNavigation();
 
   return (
     <View
@@ -13,9 +13,9 @@ export function HomeScreen() {
         justifyContent: "center",
       }}
     >
-      <Text>Home Screen</Text>
-      <Button title="詳細へ" onPress={() => navigation.navigate("Detail")} />
-      <Button title="詳細2へ" onPress={() => navigation.navigate("Detail2")} />
+      <Text>ステージ選択</Text>
+      <Button title="ステージlv1" onPress={() => navigation.navigate("Detail")} />
+      <Button title="最終ステージlv???" onPress={() => navigation.navigate("Detail2")} />
     </View>
   );
 }
