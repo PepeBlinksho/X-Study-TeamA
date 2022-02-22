@@ -1,9 +1,7 @@
 import { StyleSheet } from "react-native";
 export default StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 8,
-    backgroundColor: "#99FFFF",
+    backgroundColor: "#618783",
   },
 
   massageContainer: {
