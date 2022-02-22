@@ -3,6 +3,7 @@ import { StyleSheet, View, Text } from 'react-native'
 import { GiftedChat } from 'react-native-gifted-chat'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Icon2 from '../../assets/maria.jpeg'
+import { useNavigation } from "@react-navigation/native";
 
 const AI = '3150!'
 
@@ -29,7 +30,7 @@ const messageList = {
   },
 }
 
-export default class App extends React.Component {
+export class DetailScreen extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -86,18 +87,25 @@ export default class App extends React.Component {
         user={{
           id: 1,
           name: 'me',
+          avatar: Icon2
         }}
         textInputStyle={{
-          borderColor: 'white',
+          borderColor: '#618783',
           borderWidth: 1,
           borderRadius: 10,
           paddingLeft: 5,
           paddingTop: 7,
           backgroundColor: 'white',
         }}
-        containerStyle={{ backgroundColor: 'hsl(0, 0%, 90%)' }}
+        containerStyle={{ backgroundColor: '#618783' }}
         textStyle={{ color: 'black' }}
       />
     )
   }
 }
+
+const styles = StyleSheet.create({
+  toolbar: {
+    borderRadius: 30
+  }
+})
