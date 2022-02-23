@@ -14,11 +14,8 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen'
 import * as Animatable from 'react-native-animatable'
-import { useNavigation } from '@react-navigation/native'
 
-export function HomeScreen() {
-  const navigation = useNavigation()
-
+export function SuccessScreen({ navigation }) {
   return (
     <TouchableOpacity style={styles.touchableOpacity}>
       <SafeAreaView style={styles.safeArea} />
@@ -41,7 +38,7 @@ export function HomeScreen() {
           <Image
             style={styles.logo}
             resizeMode='contain'
-            source={require('../../assets/top/logo.png')}
+            source={require('../../assets/top/success.png')}
           />
         </Animatable.View>
         <Animatable.View
@@ -60,9 +57,9 @@ export function HomeScreen() {
             style={styles.text}
             animation='fadeIn'
             iterationCount='infinite'
-            onPress={() => navigation.navigate('First Stage')}
+            onPress={() => navigation.navigate('Second Stage')}
             iterationDelay={1000}>
-            TAP TO START
+            Next Stage
           </Animatable.Text>
         </View>
       </View>

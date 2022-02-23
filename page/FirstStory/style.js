@@ -1,43 +1,43 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native'
 export default StyleSheet.create({
   container: {
-    backgroundColor: "#618783",
+    backgroundColor: '#618783',
   },
 
   massageContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
 
   text: {
-    color: "#000",
-    textAlign: "left",
+    color: '#000',
+    textAlign: 'left',
   },
 
   buttonContainer: {
-    flexDirection: "column",
+    flexDirection: 'column',
     // justifyContent: "flex-end",
-    alignItems: "center",
+    alignItems: 'center',
     // top: "60%",
   },
 
   buttonWrapper: {},
 
   nextMessage: {
-    backgroundColor: "#FFCCFF",
+    backgroundColor: '#FFCCFF',
     width: 300,
     padding: 16,
     marginBottom: 16,
   },
 
   buttonText: {
-    color: "#000",
-    textAlign: "center",
+    color: '#000',
+    textAlign: 'center',
   },
 
   logoWrapper: {
     marginBottom: 8,
     borderRadius: 64,
-    backgroundColor: "#000",
+    backgroundColor: '#000',
     width: 48,
     height: 48,
   },
@@ -45,7 +45,7 @@ export default StyleSheet.create({
   myLogoWrapper: {
     marginBottom: 8,
     borderRadius: 64,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     width: 48,
     height: 48,
     left: 300,
@@ -63,4 +63,4 @@ export default StyleSheet.create({
     width: 40,
     height: 40,
   },
-});
+})
