@@ -57,7 +57,7 @@ export function FailedScreen({ navigation }) {
             style={styles.text}
             animation='fadeIn'
             iterationCount='infinite'
-            onPress={() => navigation.navigate('First Stage')}
+            onPress={() => navigation.navigate('Home')}
             iterationDelay={1000}>
             Back To Home
           </Animatable.Text>

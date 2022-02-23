@@ -5,6 +5,8 @@ import Icon2 from '../../assets/icon/gakky.jpeg'
 import Icon1 from '../../assets/icon/3150.jpeg'
 import { useNavigation } from '@react-navigation/native'
 
+// メッセージを定義 0と1に返信するメッセージを定義、2に返信のメッセージを定義
+// 主にここを変更
 let messageList = {
   0: {
     0: '1: やらかしちゃいました >_<',
@@ -29,6 +31,7 @@ let messageList = {
 }
 
 export class DetailScreen2 extends React.Component {
+  // 初期化
   constructor(props) {
     super(props)
     this.state = {
@@ -37,6 +40,7 @@ export class DetailScreen2 extends React.Component {
     }
   }
 
+  // ページが作られたら動作する
   componentDidMount() {
     this.onSend([
       {
@@ -51,10 +55,12 @@ export class DetailScreen2 extends React.Component {
     ])
   }
 
+  // 画面遷移関数(辻井さん作成、名前そのままです)
   onClickSuccessButton = () => {
     this.transition(true)
   }
 
+  // 画面遷移関数(辻井さん作成、名前そのままです)
   onClickFailureButton = () => {
     this.transition(false)
   }
@@ -70,13 +76,12 @@ export class DetailScreen2 extends React.Component {
     }
   }
 
+  // 自動返信関数
+  // ToDo 0223池田： ボタンで返信できるようにしたい
   reply(messages) {
     console.log(messages[0].text)
     if (this.state.number >= 3) {
       this.onClickSuccessButton()
-    }
-    if (!this.state.number) {
-      this.state.number = 0
     }
 
     return {
@@ -104,6 +109,7 @@ export class DetailScreen2 extends React.Component {
     }
   }
 
+  // 送信関数
   onSend(messages = []) {
     this.setState((previousState) => ({
       messages: GiftedChat.append(
@@ -114,6 +120,7 @@ export class DetailScreen2 extends React.Component {
     }))
   }
 
+  // 画面に表示(自動　)
   render() {
     return (
       <GiftedChat
@@ -147,6 +154,7 @@ const styles = StyleSheet.create({
   },
 })
 
+// 画面遷移でfunctionコンポーネントの使用が必須だったので定義
 export default function (props) {
   const navigation = useNavigation()
 
