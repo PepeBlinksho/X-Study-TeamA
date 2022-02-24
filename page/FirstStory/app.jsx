@@ -9,22 +9,22 @@ const messageList = {
   0: {
     0: '1: やらかしちゃいました >_<',
     1: '2: 大変申し訳ありません -_-',
-    2: 'あなたは仕事でやらかしてしまいました。なんと返信する？',
+    2: '寝坊した！上司をうまく誤魔化せ！！！',
   },
   1: {
-    0: '1: メールをご送信してしまいました。',
-    1: '2: 眠いです',
+    0: '1: おはようございます',
+    1: '2: 今起きました',
     2: 'どうした。',
   },
   2: {
-    0: 'たまにはしょうがないですよね',
+    0: 'お前も気をつけろよ！！',
     1: '次から気をつけます',
-    2: 'それは仕方ないな。謝りを入れておいて。',
+    2: 'それは仕方ないな。',
   },
   3: {
-    0: 'お疲れ様です',
-    1: 'さようなら',
-    2: '今日はもういいよ',
+    0: '頑張ります！',
+    1: '3150!',
+    2: '明日から気をつけろよ',
   },
 }
 
@@ -80,7 +80,8 @@ export class DetailScreen extends React.Component {
       this.state.number = 0
     }
 
-    if (messages[0].text === 'やらかしちゃいました') {
+    if (messages[0].text === 'NG') {
+      this.onClickFailureButton()
       return {
         _id: Math.round(Math.random() * 100000000),
         text: '出直してこい！！！',
@@ -164,6 +165,5 @@ const styles = StyleSheet.create({
 
 export default function (props) {
   const navigation = useNavigation()
-
   return <DetailScreen {...props} navigation={navigation} />
 }

@@ -2,21 +2,21 @@ import React, { useState } from 'react'
 import { StyleSheet } from 'react-native'
 import { GiftedChat } from 'react-native-gifted-chat'
 import Icon2 from '../../assets/icon/gakky.jpeg'
-import Icon1 from '../../assets/icon/3150.jpeg'
+import Icon1 from '../../assets/icon/genhoshino.jpeg'
 import { useNavigation } from '@react-navigation/native'
 
 // メッセージを定義 0と1に返信するメッセージを定義、2に返信のメッセージを定義
 // 主にここを変更
 let messageList = {
   0: {
-    0: '1: やらかしちゃいました >_<',
-    1: '2: 大変申し訳ありません -_-',
-    2: 'あなたは仕事でやらかしてしまいました。なんと返信する？',
+    0: '1: それ俺のじゃないよ',
+    1: '2: 大変申し訳ありません',
+    2: '家知らない下着を見つけたんだけど',
   },
   1: {
-    0: '1: メールをご送信してしまいました。',
+    0: '1: それは母親のだね',
     1: '2: 眠いです',
-    2: 'どうした。',
+    2: '本当に？',
   },
   2: {
     0: 'たまにはしょうがないですよね',
@@ -45,7 +45,7 @@ export class DetailScreen2 extends React.Component {
     this.onSend([
       {
         _id: Math.round(Math.random() * 100000000),
-        text: 'スタート',
+        text: '彼女に浮気の証拠が見つかってしまった、、、切り抜けろ！',
         user: {
           _id: 2,
           name: 'React Native',
@@ -131,7 +131,7 @@ export class DetailScreen2 extends React.Component {
         user={{
           id: 1,
           name: 'me',
-          avatar: Icon2,
+          avatar: Icon1,
         }}
         textInputStyle={{
           borderColor: '#618783',

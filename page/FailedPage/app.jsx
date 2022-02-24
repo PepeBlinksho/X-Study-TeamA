@@ -38,7 +38,7 @@ export function FailedScreen({ navigation }) {
           <Image
             style={styles.logo}
             resizeMode='contain'
-            source={require('../../assets/top/success.png')}
+            source={require('../../assets/top/failed.png')}
           />
         </Animatable.View>
         <Animatable.View
