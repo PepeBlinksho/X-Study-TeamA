@@ -12,7 +12,7 @@ const messageList = {
     2: '寝坊した！上司をうまく誤魔化せ！！！',
   },
   1: {
-    0: '1: おはようございます',
+    0: 'NG',
     1: '2: 今起きました',
     2: 'どうした。',
   },
@@ -99,16 +99,17 @@ export class DetailScreen extends React.Component {
       text: messageList[this.state.number][2],
       createdAt: new Date(),
       quickReplies: {
-        type: 'checkbox',
-
+        type: 'radio',
         values: [
           {
             title: messageList[this.state.number][0],
-            value: '1',
+            value: messageList[this.state.number][0],
+            id: Math.round(Math.random() * 100000000),
           },
           {
             title: messageList[this.state.number][1],
-            value: '0',
+            value: messageList[this.state.number][1],
+            id: Math.round(Math.random() * 100000000),
           },
         ],
       },
@@ -118,6 +119,27 @@ export class DetailScreen extends React.Component {
         avatar: Icon2,
       },
     }
+  }
+
+  onQuickReply(messages = []) {
+    let message = messages[0].value
+    let msg = {
+      _id: Math.round(Math.random() * 100000000),
+      text: message,
+      createdAt: new Date(),
+      user: {
+        _id: 1,
+        name: 'me',
+        avatar: Icon1,
+      },
+    }
+    this.setState((previousState) => ({
+      messages: GiftedChat.append(
+        GiftedChat.append(previousState.messages, [msg]),
+        this.reply([msg])
+      ),
+      number: this.state.number + 1,
+    }))
   }
 
   onSend(messages = []) {
@@ -136,6 +158,7 @@ export class DetailScreen extends React.Component {
         messages={this.state.messages}
         placeholder='テキストを入力してください'
         onSend={(messages) => this.onSend(messages)}
+        onQuickReply={(quickReply) => this.onQuickReply(quickReply)}
         label='送信'
         user={{
           id: 1,
@@ -156,12 +179,6 @@ export class DetailScreen extends React.Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  toolbar: {
-    borderRadius: 30,
-  },
-})
 
 export default function (props) {
   const navigation = useNavigation()
