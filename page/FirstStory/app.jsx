@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { StyleSheet } from 'react-native'
+import React from 'react'
 import { GiftedChat } from 'react-native-gifted-chat'
 import Icon2 from '../../assets/icon/maria.jpeg'
 import Icon1 from '../../assets/icon/3150.jpeg'
@@ -7,17 +6,17 @@ import { useNavigation } from '@react-navigation/native'
 
 const messageList = {
   0: {
-    0: '1: やらかしちゃいました >_<',
-    1: '2: 大変申し訳ありません -_-',
+    0: 'やらかしちゃいました >_<',
+    1: '大変申し訳ありません -_-',
     2: '寝坊した！上司をうまく誤魔化せ！！！',
   },
   1: {
     0: 'NG',
-    1: '2: 今起きました',
+    1: '今起きました',
     2: 'どうした。',
   },
   2: {
-    0: 'お前も気をつけろよ！！',
+    0: 'NG',
     1: '次から気をつけます',
     2: 'それは仕方ないな。',
   },
@@ -51,37 +50,23 @@ export class DetailScreen extends React.Component {
     ])
   }
 
-  onClickSuccessButton = () => {
-    this.transition(true)
-  }
-
-  onClickFailureButton = () => {
-    this.transition(false)
-  }
-
   transition = (flag) => {
     const { navigation } = this.props
-    if (flag == true) {
+    if (flag === true) {
       navigation.navigate('success')
-      console.log('クリア!')
     } else {
       navigation.navigate('failed')
-      console.log('失敗')
     }
   }
 
   reply(messages) {
-    console.log(messages[0].text)
     if (this.state.number >= 3) {
-      this.onClickSuccessButton()
-    }
-
-    if (!this.state.number) {
+      this.transition(true)
       this.state.number = 0
     }
 
     if (messages[0].text === 'NG') {
-      this.onClickFailureButton()
+      this.transition(false)
       return {
         _id: Math.round(Math.random() * 100000000),
         text: '出直してこい！！！',
@@ -98,6 +83,11 @@ export class DetailScreen extends React.Component {
       _id: Math.round(Math.random() * 100000000),
       text: messageList[this.state.number][2],
       createdAt: new Date(),
+      user: {
+        _id: 2,
+        name: 'React Native',
+        avatar: Icon2,
+      },
       quickReplies: {
         type: 'radio',
         values: [
@@ -112,11 +102,6 @@ export class DetailScreen extends React.Component {
             id: Math.round(Math.random() * 100000000),
           },
         ],
-      },
-      user: {
-        _id: 2,
-        name: 'React Native',
-        avatar: Icon2,
       },
     }
   }
@@ -133,6 +118,7 @@ export class DetailScreen extends React.Component {
         avatar: Icon1,
       },
     }
+
     this.setState((previousState) => ({
       messages: GiftedChat.append(
         GiftedChat.append(previousState.messages, [msg]),
@@ -158,10 +144,10 @@ export class DetailScreen extends React.Component {
         messages={this.state.messages}
         placeholder='テキストを入力してください'
         onSend={(messages) => this.onSend(messages)}
-        onQuickReply={(quickReply) => this.onQuickReply(quickReply)}
+        onQuickReply={(messages) => this.onQuickReply(messages)}
         label='送信'
         user={{
-          id: 1,
+          _id: 1,
           name: 'me',
           avatar: Icon1,
         }}
