@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import styles from './style.js';
 
-class buttons extends React.Component {
+export class Buttons extends React.Component {
   render(){
     return (
       <View style={styles.container}>
@@ -25,4 +25,4 @@ class buttons extends React.Component {
   }
 }
 
-export default buttons;
+export default Buttons;
