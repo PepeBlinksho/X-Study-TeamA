@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { StyleSheet } from 'react-native'
 import { GiftedChat } from 'react-native-gifted-chat'
 import Icon2 from '../../assets/icon/gakky.jpeg'
 import Icon1 from '../../assets/icon/genhoshino.jpeg'
@@ -9,13 +8,13 @@ import { useNavigation } from '@react-navigation/native'
 // 主にここを変更
 let messageList = {
   0: {
-    0: '1: それ俺のじゃないよ',
-    1: '2: 大変申し訳ありません',
+    0: 'それ俺のじゃないよ',
+    1: '大変申し訳ありません',
     2: '家知らない下着を見つけたんだけど',
   },
   1: {
-    0: '1: それは母親のだね',
-    1: '2: 眠いです',
+    0: 'それは母親のだね',
+    1: '嘘です。すみません。。。。',
     2: '本当に？',
   },
   2: {
@@ -40,12 +39,11 @@ export class DetailScreen2 extends React.Component {
     }
   }
 
-  // ページが作られたら動作する
   componentDidMount() {
     this.onSend([
       {
         _id: Math.round(Math.random() * 100000000),
-        text: '彼女に浮気の証拠が見つかってしまった、、、切り抜けろ！',
+        text: 'スタート。',
         user: {
           _id: 2,
           name: 'React Native',
@@ -55,61 +53,84 @@ export class DetailScreen2 extends React.Component {
     ])
   }
 
-  // 画面遷移関数(辻井さん作成、名前そのままです)
-  onClickSuccessButton = () => {
-    this.transition(true)
-  }
-
-  // 画面遷移関数(辻井さん作成、名前そのままです)
-  onClickFailureButton = () => {
-    this.transition(false)
-  }
-
   transition = (flag) => {
-    const { navigation } = this.props;
-    if (flag == true) {
-      navigation.navigate('Third Story')
-      console.log('クリア!')
+    const { navigation } = this.props
+    if (flag === true) {
+      navigation.navigate('success', 'test')
     } else {
-      navigation.navigate('Home')
-      console.log('失敗')
+      navigation.navigate('failed')
     }
   }
 
-  // 自動返信関数
-  // ToDo 0223池田： ボタンで返信できるようにしたい
   reply(messages) {
-    console.log(messages[0].text)
-    if (this.state.number >= 3) {
-      this.onClickSuccessButton()
+    if (this.state.number >= 2) {
+      this.transition(true)
+      this.state.number = 0
+    }
+
+    if (messages[0].text === 'それは母親のだね') {
+      this.transition(false)
+      return {
+        _id: Math.round(Math.random() * 100000000),
+        text: '嘘でしょ',
+        createdAt: new Date(),
+        user: {
+          _id: 2,
+          name: 'React Native',
+          avatar: Icon2,
+        },
+      }
     }
 
     return {
       _id: Math.round(Math.random() * 100000000),
       text: messageList[this.state.number][2],
       createdAt: new Date(),
-      quickReplies: {
-        type: 'radio',
-        values: [
-          {
-            title: messageList[this.state.number][0],
-            value: '1',
-          },
-          {
-            title: messageList[this.state.number][1],
-            value: '0',
-          },
-        ],
-      },
       user: {
         _id: 2,
         name: 'React Native',
         avatar: Icon2,
       },
+      quickReplies: {
+        type: 'radio',
+        values: [
+          {
+            title: messageList[this.state.number][0],
+            value: messageList[this.state.number][0],
+            id: Math.round(Math.random() * 100000000),
+          },
+          {
+            title: messageList[this.state.number][1],
+            value: messageList[this.state.number][1],
+            id: Math.round(Math.random() * 100000000),
+          },
+        ],
+      },
     }
   }
 
-  // 送信関数
+  onQuickReply(messages = []) {
+    let message = messages[0].value
+    let msg = {
+      _id: Math.round(Math.random() * 100000000),
+      text: message,
+      createdAt: new Date(),
+      user: {
+        _id: 1,
+        name: 'me',
+        avatar: Icon1,
+      },
+    }
+
+    this.setState((previousState) => ({
+      messages: GiftedChat.append(
+        GiftedChat.append(previousState.messages, [msg]),
+        this.reply([msg])
+      ),
+      number: this.state.number + 1,
+    }))
+  }
+
   onSend(messages = []) {
     this.setState((previousState) => ({
       messages: GiftedChat.append(
@@ -120,16 +141,16 @@ export class DetailScreen2 extends React.Component {
     }))
   }
 
-  // 画面に表示(自動　)
   render() {
     return (
       <GiftedChat
         messages={this.state.messages}
         placeholder='テキストを入力してください'
         onSend={(messages) => this.onSend(messages)}
+        onQuickReply={(messages) => this.onQuickReply(messages)}
         label='送信'
         user={{
-          id: 1,
+          _id: 1,
           name: 'me',
           avatar: Icon1,
         }}
@@ -147,12 +168,6 @@ export class DetailScreen2 extends React.Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  toolbar: {
-    borderRadius: 30,
-  },
-})
 
 // 画面遷移でfunctionコンポーネントの使用が必須だったので定義
 export default function (props) {

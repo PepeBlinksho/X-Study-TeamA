@@ -6,19 +6,19 @@ import { useNavigation } from '@react-navigation/native'
 
 const messageList = {
   0: {
-    0: 'やらかしちゃいました >_<',
-    1: '大変申し訳ありません -_-',
-    2: '寝坊した！上司をうまく誤魔化せ！！！',
+    0: '今日は用事で行けないです、、、',
+    1: '行きましょう！（行きたくないけど）',
+    2: '今日、夕飯一緒にどう？',
   },
   1: {
-    0: 'NG',
-    1: '今起きました',
-    2: 'どうした。',
+    0: 'おじいさんのお見舞いに行くため',
+    1: '自分の時間を楽しみたいです！',
+    2: 'どんな用事？',
   },
   2: {
-    0: 'NG',
-    1: '次から気をつけます',
-    2: 'それは仕方ないな。',
+    0: ' ',
+    1: ' ',
+    2: 'それは仕方ないね。また今度にしよう',
   },
   3: {
     0: '頑張ります！',
@@ -40,7 +40,7 @@ export class DetailScreen extends React.Component {
     this.onSend([
       {
         _id: Math.round(Math.random() * 100000000),
-        text: 'スタート',
+        text: 'スタート。ご飯に誘われるが行きたくないとき編',
         user: {
           _id: 2,
           name: 'React Native',
@@ -53,23 +53,23 @@ export class DetailScreen extends React.Component {
   transition = (flag) => {
     const { navigation } = this.props
     if (flag === true) {
-      navigation.navigate('success')
+      navigation.navigate('success', 'test')
     } else {
       navigation.navigate('failed')
     }
   }
 
   reply(messages) {
-    if (this.state.number >= 3) {
+    if (this.state.number >= 2) {
       this.transition(true)
       this.state.number = 0
     }
 
-    if (messages[0].text === 'NG') {
+    if (messages[0].text === 'おじいさんのお見舞いに行くため') {
       this.transition(false)
       return {
         _id: Math.round(Math.random() * 100000000),
-        text: '出直してこい！！！',
+        text: '嘘でしょ',
         createdAt: new Date(),
         user: {
           _id: 2,
