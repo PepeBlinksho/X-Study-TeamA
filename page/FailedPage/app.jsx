@@ -31,7 +31,7 @@ export function FailedScreen({ navigation }) {
         </Animatable.View>
         <Animatable.View
           style={styles.logoContainer}
-          animation='tada'
+          animation='flipOutY'
           iterationCount='infinite'
           direction='alternate'
           iterationDelay={500}>

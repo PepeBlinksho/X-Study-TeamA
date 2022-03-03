@@ -20,7 +20,10 @@ export function HomeScreen() {
   const navigation = useNavigation()
 
   return (
-    <TouchableOpacity style={styles.touchableOpacity}>
+    <TouchableOpacity
+      style={styles.touchableOpacity}
+      onPress={() => navigation.navigate('First Stage')}
+    >
       <SafeAreaView style={styles.safeArea} />
       <View style={styles.containerA}>
         <Animatable.View animation='fadeIn' delay={1000}>
@@ -60,7 +63,6 @@ export function HomeScreen() {
             style={styles.text}
             animation='fadeIn'
             iterationCount='infinite'
-            onPress={() => navigation.navigate('First Stage')}
             iterationDelay={1000}>
             TAP TO START
           </Animatable.Text>

@@ -144,10 +144,12 @@ export class DetailScreen2 extends React.Component {
   render() {
     return (
       <GiftedChat
+        messagesContainerStyle={{ backgroundColor: '#add4cf' }}
         messages={this.state.messages}
         placeholder='テキストを入力してください'
         onSend={(messages) => this.onSend(messages)}
         onQuickReply={(messages) => this.onQuickReply(messages)}
+        quickReplyStyle={{ backgroundColor: 'white' }}
         label='送信'
         user={{
           _id: 1,

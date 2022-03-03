@@ -17,7 +17,10 @@ import * as Animatable from 'react-native-animatable'
 
 export function SuccessScreen({ navigation }) {
   return (
-    <TouchableOpacity style={styles.touchableOpacity}>
+    <TouchableOpacity
+      style={styles.touchableOpacity}
+      onPress={() => navigation.navigate('Second Stage')}
+    >
       <SafeAreaView style={styles.safeArea} />
       <View style={styles.containerA}>
         <Animatable.View animation='fadeIn' delay={1000}>
@@ -31,7 +34,7 @@ export function SuccessScreen({ navigation }) {
         </Animatable.View>
         <Animatable.View
           style={styles.logoContainer}
-          animation='tada'
+          animation='zoomIn'
           iterationCount='infinite'
           direction='alternate'
           iterationDelay={500}>
@@ -57,7 +60,6 @@ export function SuccessScreen({ navigation }) {
             style={styles.text}
             animation='fadeIn'
             iterationCount='infinite'
-            onPress={() => navigation.navigate('Second Stage')}
             iterationDelay={1000}>
             Next Stage
           </Animatable.Text>
